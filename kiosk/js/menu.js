@@ -115,16 +115,32 @@ let objArray = {
     // }
 
 
-    if( menuArray.length === 0 ){
+    if( menuArray.length <= 0 ){
         menuArray.push(menu);
+        console.log(menuArray);
              
     }else{
-     const addTest =  menuArray.find((addMenu) => addMenu !== menu)
-
+     const addTest =  menuArray.find((addMenu) => addMenu.menu === menu)
+        //if / else 한번 들어가야함 ,
+        //find로 이 안에잇는걸 찾기때문에 if 조건에서 (undefined가 아닐 때만 실행)
+       console.log(addTest);
+      
+      if(addTest !== undefined){
       console.log(addTest);
+      menuArray.push(addTest);
+      // document.write(addTest);
+      for(let i= 0 ; i < menuArray.length; i++){
+        document.write(menuArray[i].menu);
+        console.log(menuArray[i]);
+      }
+      //
+
+
+     }
+    
     }
    
-    console.log(menuArray);
+//    console.log(menuArray);
 
 
 
