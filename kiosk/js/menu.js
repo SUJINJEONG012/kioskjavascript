@@ -1,5 +1,7 @@
 
+let menuArray = [];
 window.onload = function(name, price, count){
+
 
 
 
@@ -91,72 +93,49 @@ let objArray = {
      document.querySelector('.left_content').appendChild(wrap__left);
     
 
-     let menuArray = [];
-
-
-    //클릭이벤트리스너 함수
-    function clickMenu(menu){
-        // console.log(menu);
-
-
-    
-
-    //for문 안에서 클릭하고
-    // for(let i =0 ; i< menuArray.length ; i++){
-    //     //내가선택한 메뉴가 클릭이 되었는지
-    //     if(menuArray[i] === menu ){
-    //          alert('추가하시겟습니가?');
-    //          console.log(menu);    
-    //     }else{
-    //         menuArray.push(menu); 
-    //     }
-    //     console.log(menuArray[i]);
-
-    // }
-
-    
-
-
-    if( menuArray.length <= 0 ){
-        menuArray.push(menu);
-        console.log(menuArray);
-             
-    }else{
-     const addTest =  menuArray.find((addMenu) => addMenu.menu === menu)
-        //if / else 한번 들어가야함 ,
-        //find로 이 안에잇는걸 찾기때문에 if 조건에서 (undefined가 아닐 때만 실행)
-       console.log(addTest);
-      
-      if(addTest !== undefined){
-      console.log(addTest);
-      menuArray.push(addTest);
-      // document.write(addTest);
-      for(let i= 0 ; i < menuArray.length; i++){
-        document.write(menuArray[i].menu);
-        console.log(menuArray[i]);
-      }
-      //
-
-
-     }
-    
-    }
    
-//    console.log(menuArray);
-
-
 
 
 }//함수 끝
 
-
-
-
-    
-
-
     
    }
+
+
+   
+   
+
+
+   //클릭이벤트리스너 함수
+   function clickMenu(menu){
+ 
+   if( menuArray.length === 0 ){
+       menuArray.push(menu);
+       console.log(menuArray);
+            
+   }else{
+    // console.log(menuArray);
+      const addTest =  menuArray.find((addMenu) => addMenu === menu);
+       //if / else 한번 들어가야함 ,
+       //find로 이 안에잇는걸 찾기때문에 if 조건에서 (undefined가 아닐 때만 실행)
+      console.log(addTest);
+     
+     if(addTest === undefined){
+    //  console.log(addTest);
+     menuArray.push(menu);
+     console.log(addTest);
+    //  console.log(menuArray);
+    
+    //  for(let i= 0 ; i < menuArray.length; i++){
+    //    document.write(menuArray[i].menu);
+    //    console.log(menuArray[i]);
+     }
+    
+
+    // }
+   
+   }
+
 
  }
 
