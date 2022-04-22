@@ -92,7 +92,7 @@ let objArray = {
 }//함수 끝
 
     
-   }
+}
 
 
    
@@ -100,8 +100,7 @@ let objArray = {
    //클릭이벤트리스너 함수
    function clickMenu(menu){
   
-
-    //최초로 들어갈땐 무조건 들어가고 
+  //최초로 들어갈땐 무조건 들어가고 
    if( menuArray.length === 0 ){
        menuArray.push(menu);
        console.log(menuArray);
@@ -117,9 +116,6 @@ let objArray = {
      console.log(menuArray);
      }
     
-
- 
-   
    }
 
 
