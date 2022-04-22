@@ -56,10 +56,7 @@ let objArray = {
    console.log(key);
    let wrap__left = document.createElement('div');
    wrap__left.className = `wrap__left menu_area ${key}`;
-//    console.log('--')
-//    console.log(wrap__left);
-    // console.log(objArray[key]);
-    //3개로 분리작업
+
 
 
     for(let i = 0; i <objArray[key].length; i++){
@@ -79,21 +76,17 @@ let objArray = {
 
       li.appendChild(menuName);
       li.appendChild(menuPrice);
-      li.addEventListener('click', function() {
-        clickMenu( {menu:objArray[key][i].menu, price:objArray[key][i].price} )
+      li.addEventListener('click', function() { 
+        clickMenu( {menuClickName:objArray[key][i].menu, price:objArray[key][i].price} )
       });
       
     wrap__left.appendChild(li);
-
-    //console.log('li 붙인거 확인하기');
-    //console.log(wrap__left);
 
           
      //돔출력
      document.querySelector('.left_content').appendChild(wrap__left);
     
 
-   
 
 
 }//함수 끝
@@ -103,36 +96,29 @@ let objArray = {
 
 
    
-   
-
-
+  
    //클릭이벤트리스너 함수
    function clickMenu(menu){
- 
+  
+
+    //최초로 들어갈땐 무조건 들어가고 
    if( menuArray.length === 0 ){
        menuArray.push(menu);
        console.log(menuArray);
             
    }else{
-    // console.log(menuArray);
-      const addTest =  menuArray.find((addMenu) => addMenu === menu);
-       //if / else 한번 들어가야함 ,
-       //find로 이 안에잇는걸 찾기때문에 if 조건에서 (undefined가 아닐 때만 실행)
+      const addTest =  menuArray.find((addMenu) => addMenu.menu === menu.menuClickName);
+   
       console.log(addTest);
      
-     if(addTest === undefined){
-    //  console.log(addTest);
-     menuArray.push(menu);
-     console.log(addTest);
-    //  console.log(menuArray);
+     if(addTest === undefined){ //중복되는 값이 없을때 푸시
     
-    //  for(let i= 0 ; i < menuArray.length; i++){
-    //    document.write(menuArray[i].menu);
-    //    console.log(menuArray[i]);
+     menuArray.push(menu);
+     console.log(menuArray);
      }
     
 
-    // }
+ 
    
    }
 
