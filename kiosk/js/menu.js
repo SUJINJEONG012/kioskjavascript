@@ -2,7 +2,7 @@
 let menuArray = [];
 
 
-window.onload = function(name, price, count){
+window.onload = () => {
 
 
 // 메뉴이름, 가격, 수량 
@@ -50,6 +50,9 @@ let objArray = {
 };
 
 
+
+
+
  for (let key in  objArray) {
 
    objArray[key];
@@ -83,7 +86,6 @@ let objArray = {
       
     wrap__left.appendChild(li);
 
-          
      //돔출력
      document.querySelector('.left_content').appendChild(wrap__left);
   
@@ -92,69 +94,100 @@ let objArray = {
 
     
 }
+//for문
    
   
    //클릭이벤트리스너 함수
    function clickMenu(menu){
-
-    //선택한 리스트 보여주는 변수 생성
-   const cartItem = document.createElement('div');
-   cartItem.className = 'cart_item';
-
-   cartItem.innerText = `${menu.menuClickName} ${menu.price}`;
-   console.log(cartItem);
-
-   document.querySelector('.wrap__cart').appendChild(cartItem);
-   
-   //삭제버튼
-   const deleteBtn = document.createElement('button');
-   cartItem.appendChild(deleteBtn);
-   deleteBtn.textContent = '삭제';
-   
-   //삭제 기능
-
-   deleteBtn.addEventListener('click', deleteMenu);
-   function deleteMenu(e){
-     const menuList = e.target.parentElement;
-     if(confirm('선택한 메뉴를 지우시겠습니까?') === true ){
-       menuList.remove();
-     }else{
-       return;
-     }
-   }
-  //여기에 수량과 삭제버튼..
-   
-  
-
   
     //최초로 들어갈땐 무조건 들어가고 
     if( menuArray.length === 0 ){
        menuArray.push(menu);
        console.log(menuArray);
+       chooseList(menu);
+       
+       
     }else{
-      const addTest =  menuArray.find((addMenu) => addMenu.menu === menu.menuClickName);
+      const addTest =  menuArray.find((addMenu) => addMenu.menuClickName === menu.menuClickName);
       console.log(addTest);
 
      if(addTest === undefined){ //중복되는 값이 없을때 푸시
       menuArray.push(menu);
       console.log(menuArray);
+      chooseList(menu);
       }    
    }
 
-  
+ }
+ //이벤트함수 끝
+
+
+ function chooseList(menu){
+
+  //선택한 리스트 보여주는 변수 생성
+  const cartItem = document.createElement('div');
+  cartItem.className = 'cart_item';
+    
+       cartItem.innerText = `${menu.menuClickName} ${menu.price}`;
+       console.log(cartItem);
+    
+       document.querySelector('.wrap__cart').appendChild(cartItem);
    
-   //할일목록 추가
+
+  // 수량태그는 여기 만들고
+  // 태그 만들고, +, - 태그만들고, 이벤트리스너 함수만 만들고 , 기능은 아래함수에 들어간다
+  //    //수량 택그 생성 . + - 버튼을 만들고  이벤트리스너로  카운트 만들고
+  //    const count = document.createElement('div');
+  //    count.className = 'count';
+  //    count.innerText ='';
+  //    document.querySelector('.cartItem').appendChild(count);
+     
+  
+  //삭제버튼 태그
+   const deleteBtn = document.createElement('button');
+   cartItem.appendChild(deleteBtn);
+   deleteBtn.textContent = '삭제';
+   
+
+  //삭제 기능 내장함수
+   deleteBtn.addEventListener('click', deleteMenu);
 
 
-
+  //수량 플러스 마이너스 전체금액
 
 
  }
 
+ //선택한 리스트 함수 끝
 
+
+
+
+ //삭제기능
+ function deleteMenu(e){
+  const menuList = e.target.parentElement;
+  if(confirm('선택한 메뉴를 지우시겠습니까?') === true ){
+    menuList.remove();
+  }else{
+    return;
+  }
+}
+
+ 
+ //수량만 바꾸는 함수
+ function countNum(){
+   
+ //수량 +, - 클릭했을 때 변경되는값 , 
+
+  }
+
+  //수랼 함수 끝
 
 }
-//함수 끝
+//window 함수 끝
+
+
+
 
 
 
