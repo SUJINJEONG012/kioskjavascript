@@ -1,5 +1,7 @@
 
+let menuArray = [];
 window.onload = function(name, price, count){
+
 
 
 
@@ -54,10 +56,7 @@ let objArray = {
    console.log(key);
    let wrap__left = document.createElement('div');
    wrap__left.className = `wrap__left menu_area ${key}`;
-//    console.log('--')
-//    console.log(wrap__left);
-    // console.log(objArray[key]);
-    //3개로 분리작업
+
 
 
     for(let i = 0; i <objArray[key].length; i++){
@@ -77,68 +76,48 @@ let objArray = {
 
       li.appendChild(menuName);
       li.appendChild(menuPrice);
-      li.addEventListener('click', function() {
-        clickMenu( {menu:objArray[key][i].menu, price:objArray[key][i].price} )
+      li.addEventListener('click', function() { 
+        clickMenu( {menuClickName:objArray[key][i].menu, price:objArray[key][i].price} )
       });
       
     wrap__left.appendChild(li);
-
-    //console.log('li 붙인거 확인하기');
-    //console.log(wrap__left);
 
           
      //돔출력
      document.querySelector('.left_content').appendChild(wrap__left);
     
 
-     let menuArray = [];
-
-
-    //클릭이벤트리스너 함수
-    function clickMenu(menu){
-        // console.log(menu);
-
-
-    
-
-    //for문 안에서 클릭하고
-    // for(let i =0 ; i< menuArray.length ; i++){
-    //     //내가선택한 메뉴가 클릭이 되었는지
-    //     if(menuArray[i] === menu ){
-    //          alert('추가하시겟습니가?');
-    //          console.log(menu);    
-    //     }else{
-    //         menuArray.push(menu); 
-    //     }
-    //     console.log(menuArray[i]);
-
-    // }
-
-
-    if( menuArray.length === 0 ){
-        menuArray.push(menu);
-             
-    }else{
-     const addTest =  menuArray.find((addMenu) => addMenu !== menu)
-
-      console.log(addTest);
-    }
-   
-    console.log(menuArray);
-
-
 
 
 }//함수 끝
 
-
-
-
     
+}
 
 
+   
+  
+   //클릭이벤트리스너 함수
+   function clickMenu(menu){
+  
+  //최초로 들어갈땐 무조건 들어가고 
+   if( menuArray.length === 0 ){
+       menuArray.push(menu);
+       console.log(menuArray);
+            
+   }else{
+      const addTest =  menuArray.find((addMenu) => addMenu.menu === menu.menuClickName);
+   
+      console.log(addTest);
+     
+     if(addTest === undefined){ //중복되는 값이 없을때 푸시
+    
+     menuArray.push(menu);
+     console.log(menuArray);
+     }
     
    }
+
 
  }
 
