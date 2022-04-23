@@ -1,8 +1,8 @@
 
 let menuArray = [];
+
+
 window.onload = function(name, price, count){
-
-
 
 
 // 메뉴이름, 가격, 수량 
@@ -77,7 +77,8 @@ let objArray = {
       li.appendChild(menuName);
       li.appendChild(menuPrice);
       li.addEventListener('click', function() { 
-        clickMenu( {menuClickName:objArray[key][i].menu, price:objArray[key][i].price} )
+        clickMenu({menuClickName:objArray[key][i].menu, price:objArray[key][i].price} )
+        
       });
       
     wrap__left.appendChild(li);
@@ -85,38 +86,67 @@ let objArray = {
           
      //돔출력
      document.querySelector('.left_content').appendChild(wrap__left);
-    
-
-
+  
 
 }//함수 끝
 
     
 }
-
-
    
   
    //클릭이벤트리스너 함수
    function clickMenu(menu){
+
+    //선택한 리스트 보여주는 변수 생성
+   const cartItem = document.createElement('div');
+   cartItem.className = 'cart_item';
+
+   cartItem.innerText = `${menu.menuClickName} ${menu.price}`;
+   console.log(cartItem);
+
+   document.querySelector('.wrap__cart').appendChild(cartItem);
+   
+   //삭제버튼
+   const deleteBtn = document.createElement('button');
+   cartItem.appendChild(deleteBtn);
+   deleteBtn.textContent = '삭제';
+   
+   //삭제 기능
+
+   deleteBtn.addEventListener('click', deleteMenu);
+   function deleteMenu(e){
+     const menuList = e.target.parentElement;
+     if(confirm('선택한 메뉴를 지우시겠습니까?') === true ){
+       menuList.remove();
+     }else{
+       return;
+     }
+   }
+  //여기에 수량과 삭제버튼..
+   
   
-  //최초로 들어갈땐 무조건 들어가고 
-   if( menuArray.length === 0 ){
+
+  
+    //최초로 들어갈땐 무조건 들어가고 
+    if( menuArray.length === 0 ){
        menuArray.push(menu);
        console.log(menuArray);
-            
-   }else{
+    }else{
       const addTest =  menuArray.find((addMenu) => addMenu.menu === menu.menuClickName);
-   
       console.log(addTest);
-     
+
      if(addTest === undefined){ //중복되는 값이 없을때 푸시
-    
-     menuArray.push(menu);
-     console.log(menuArray);
-     }
-    
+      menuArray.push(menu);
+      console.log(menuArray);
+      }    
    }
+
+  
+   
+   //할일목록 추가
+
+
+
 
 
  }
