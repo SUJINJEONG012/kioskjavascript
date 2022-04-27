@@ -10,7 +10,7 @@ let objArray = {
 
     menu_coffee: [
 
-    {menu : '아메리카노', price:3000,  수량:1 },
+    {id:1, menu : '아메리카노', price:3000,  수량:1 }, 
     {menu : '아이스 아메리카노', price:3500,  수량:1 },
     {menu : '카페라떼', price:4000,  수량:1 },
     {menu : '아이스 카페라떼', price:4500,  수량:1 },
@@ -127,6 +127,7 @@ let objArray = {
   //선택한 리스트 보여주는 변수 생성
   const cartItem = document.createElement('div');
   cartItem.className = 'cart_item';
+
     
        cartItem.innerText = `${menu.menuClickName} ${menu.price}`;
        console.log(cartItem);
@@ -134,15 +135,7 @@ let objArray = {
        document.querySelector('.wrap__cart').appendChild(cartItem);
    
 
-  // 수량태그는 여기 만들고
-  // 태그 만들고, +, - 태그만들고, 이벤트리스너 함수만 만들고 , 기능은 아래함수에 들어간다
-  //    //수량 택그 생성 . + - 버튼을 만들고  이벤트리스너로  카운트 만들고
-  //    const count = document.createElement('div');
-  //    count.className = 'count';
-  //    count.innerText ='';
-  //    document.querySelector('.cartItem').appendChild(count);
-     
-  
+
   //삭제버튼 태그
    const deleteBtn = document.createElement('button');
    cartItem.appendChild(deleteBtn);
@@ -153,13 +146,21 @@ let objArray = {
    deleteBtn.addEventListener('click', deleteMenu);
 
 
-  //수량 플러스 마이너스 전체금액
 
+  //수량 html태그
+  cartItem.insertAdjacentHTML(
+    "beforeend",
+    `<div>
+      <div class="middle">수량</div>
+      <div>
+        <button type="button" onclick="plus" class="">+</button>
+        <span>1</span>
+        <button type="" onclick="minus" class="">-</button>
+      </div>
+    </div>`
+  );
 
  }
-
- //선택한 리스트 함수 끝
-
 
 
 
@@ -174,14 +175,11 @@ let objArray = {
 }
 
  
- //수량만 바꾸는 함수
+ //수량 카운트기능
  function countNum(){
-   
- //수량 +, - 클릭했을 때 변경되는값 , 
-
+    const 
   }
 
-  //수랼 함수 끝
 
 }
 //window 함수 끝
