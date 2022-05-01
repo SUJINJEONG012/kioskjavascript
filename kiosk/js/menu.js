@@ -1,16 +1,15 @@
 
-let menuArray = [];
-
 
 window.onload = () => {
 
+
+  let menuArray = [];
 
 // 메뉴이름, 가격, 수량 
 let objArray = {
 
     menu_coffee: [
-
-    {id:1, menu : '아메리카노', price:3000,  수량:1 }, 
+    {menu : '아메리카노', price:3000,  수량:1 }, 
     {menu : '아이스 아메리카노', price:3500,  수량:1 },
     {menu : '카페라떼', price:4000,  수량:1 },
     {menu : '아이스 카페라떼', price:4500,  수량:1 },
@@ -58,10 +57,12 @@ let objArray = {
    objArray[key];
    console.log(key);
    let wrap__left = document.createElement('div');
+   //wrap__left menu_area >> div 추가하고 난뒤에 키 값을 넣어서 자바스크립트로 만들었슴.
    wrap__left.className = `wrap__left menu_area ${key}`;
 
 
-
+ //for문안에 이중 for문으로 보여지고,
+ 
     for(let i = 0; i <objArray[key].length; i++){
 
     // console.log(objArray[key][i]);
@@ -90,7 +91,7 @@ let objArray = {
      document.querySelector('.left_content').appendChild(wrap__left);
   
 
-}//함수 끝
+}//for문
 
     
 }
@@ -101,7 +102,7 @@ let objArray = {
    function clickMenu(menu){
   
     //최초로 들어갈땐 무조건 들어가고 
-    if( menuArray.length === 0 ){
+   if( menuArray.length === 0 ){
        menuArray.push(menu);
        console.log(menuArray);
        chooseList(menu);
@@ -111,7 +112,8 @@ let objArray = {
       const addTest =  menuArray.find((addMenu) => addMenu.menuClickName === menu.menuClickName);
       console.log(addTest);
 
-     if(addTest === undefined){ //중복되는 값이 없을때 푸시
+   // if(addTest === undefined){ //중복되는 값이 없을때 푸시
+      if(!addTest){ //중복되는 값이 없을때 푸시,
       menuArray.push(menu);
       console.log(menuArray);
       chooseList(menu);
@@ -128,14 +130,11 @@ let objArray = {
   const cartItem = document.createElement('div');
   cartItem.className = 'cart_item';
 
-    
        cartItem.innerText = `${menu.menuClickName} ${menu.price}`;
        console.log(cartItem);
     
        document.querySelector('.wrap__cart').appendChild(cartItem);
    
-
-
   //삭제버튼 태그
    const deleteBtn = document.createElement('button');
    cartItem.appendChild(deleteBtn);
@@ -145,9 +144,10 @@ let objArray = {
   //삭제 기능 내장함수
    deleteBtn.addEventListener('click', deleteMenu);
 
+ //새로운 배열을 넣어주는 식, 새롭게 정의해주는 식은 const 가 아니라 let
 
 
-  //수량 html태그
+   //수량 html태그
   cartItem.insertAdjacentHTML(
     "beforeend",
     `<div>
@@ -162,9 +162,11 @@ let objArray = {
 
  }
 
+ //선택한 메뉴 함수종료
 
 
- //삭제기능
+
+ //삭제기능 함수 시작
  function deleteMenu(e){
   const menuList = e.target.parentElement;
   if(confirm('선택한 메뉴를 지우시겠습니까?') === true ){
@@ -175,10 +177,10 @@ let objArray = {
 }
 
  
- //수량 카운트기능
- function countNum(){
-    const 
-  }
+ //수량 추가와 카운트 기능 함수
+//  function countNum(){
+//     const 
+//   }
 
 
 }
